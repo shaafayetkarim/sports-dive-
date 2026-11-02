@@ -2,6 +2,8 @@ import Link from 'next/link';
 import { getProducts, getCollection, getNavigation } from '@/lib/shopify';
 import { ProductCard } from '@/components/ProductCard';
 import { VIDEOS } from '@/lib/config';
+import { ReviewCarousel } from '@/components/ReviewCarousel';
+import { VideoBackground } from '@/components/VideoBackground';
 export const dynamic = 'force-dynamic';
 export default async function Home({
   searchParams,
@@ -18,20 +20,13 @@ export default async function Home({
   return (
     <>
       <section className="hero">
-        <video
-          className="hero-video"
-          src={VIDEOS.hero}
-          autoPlay
-          muted
-          loop
-          playsInline
-        />
+        <VideoBackground className="hero-video" src={VIDEOS.hero} />
         <div className="hero-overlay" />
         <div className="hero-copy">
           <h1>
-            FOR THE LOVE
+            DON'T BREAKUP
             <br />
-            OF THE GAME.
+            WITH SPORTS
           </h1>
           <p>YOUR KIT. YOUR GAME. YOUR NEXT MOVE.</p>
           <Link className="button" href="/collections/all-products">
@@ -135,14 +130,7 @@ export default async function Home({
       </section>
       <section className="story-split">
         <Link className="story-visual" href="/collections/jackets" aria-label="Explore jackets">
-          <video
-            className="story-video"
-            src={VIDEOS.a}
-            autoPlay
-            muted
-            loop
-            playsInline
-          />
+          <VideoBackground className="story-video" src={VIDEOS.a} />
         </Link>
         <div className="story-copy">
           <p className="eyebrow">BUILT AROUND YOUR GAME</p>
@@ -174,14 +162,7 @@ export default async function Home({
           </p>
         </div>
         <Link className="story-visual" href="/collections/boots" aria-label="Explore boots and turfs">
-          <video
-            className="story-video"
-            src={VIDEOS.b}
-            autoPlay
-            muted
-            loop
-            playsInline
-          />
+          <VideoBackground className="story-video" src={VIDEOS.b} />
         </Link>
       </section>
       <section className="brand-statement">
@@ -195,6 +176,7 @@ export default async function Home({
           MEET SPORTS DIVE ↗
         </Link>
       </section>
+      <ReviewCarousel />
     </>
   );
 }

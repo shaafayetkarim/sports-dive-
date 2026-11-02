@@ -213,22 +213,55 @@ export const getNavigation = cache(async (): Promise<Navigation> => {
     } | null;
     items?: Item[];
   };
-  const d = await shopify<{ products: { items: Item[] } | null; about: { items: Item[] } | null }>(
-    Q.NAVIGATION,
-    {
-      products: process.env.SHOPIFY_PRODUCTS_MENU || 'sports-dive-products',
-      about: process.env.SHOPIFY_ABOUT_MENU || 'sports-dive-about',
-    },
-  );
+  type CollectionNode = {
+    handle: string;
+    title: string;
+    image: Navigation['categories'][number]['image'];
+  };
+  const d = await shopify<{
+    collections?: { nodes: CollectionNode[] };
+    products: { items: Item[] } | null;
+    about: { items: Item[] } | null;
+  }>(Q.NAVIGATION, {
+    products: process.env.SHOPIFY_PRODUCTS_MENU || 'sports-dive-products',
+    about: process.env.SHOPIFY_ABOUT_MENU || 'sports-dive-about',
+  });
+
+  const shopifyCollections = d.collections?.nodes || [];
+  const collectionImageMap = new Map<string, Navigation['categories'][number]['image']>();
+  for (const c of shopifyCollections) {
+    if (c.image) {
+      collectionImageMap.set(c.handle, c.image);
+    }
+  }
+
   const flat = (items: Item[]): Item[] => items.flatMap((i) => [i, ...(i.items || [])]);
-  const categories = flat(d.products?.items || [])
+  const menuCategories = flat(d.products?.items || [])
     .filter((i) => i.type === 'COLLECTION' && i.resource)
-    .map((i) => ({ title: i.title, handle: i.resource!.handle, image: i.resource!.image || null }));
+    .map((i) => ({
+      title: i.title,
+      handle: i.resource!.handle,
+      image: i.resource!.image || collectionImageMap.get(i.resource!.handle) || null,
+    }));
+
+  const categories = CATEGORIES.map((cat) => {
+    const fromMenu = menuCategories.find((m) => m.handle === cat.handle);
+    const shopifyImg = collectionImageMap.get(cat.handle);
+    const demoFallback =
+      demoNavigation.categories.find((d) => d.handle === cat.handle)?.image || null;
+    return {
+      title: fromMenu?.title || cat.title,
+      handle: cat.handle,
+      image: fromMenu?.image || shopifyImg || demoFallback,
+    };
+  });
+
   const about = (d.about?.items || [])
     .filter((i) => i.type === 'PAGE' && i.resource)
     .map((i) => ({ title: i.title, href: `/pages/${i.resource!.handle}` }));
+
   return {
-    categories: d.products ? categories : CATEGORIES.map((c) => ({ ...c, image: null })),
+    categories,
     about: d.about ? about : ABOUT_LINKS,
   };
 });

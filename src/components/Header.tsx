@@ -50,7 +50,10 @@ export function Header({ navigation }: { navigation: Navigation }) {
         </div>
         <div className="header-row">
           <Link href="/" className="wordmark" aria-label="Sports Dive home">
-            <img src="/brand/sports-dive.png" alt="Sports Dive" />
+            <img
+              src={transparent ? '/brand/sports-dive-white.png' : '/brand/sports-dive-black.png'}
+              alt="Sports Dive"
+            />
           </Link>
           <nav aria-label="Main navigation" className={mobile ? 'mobile-open' : ''}>
             {(['products', 'about'] as const).map((name) => (

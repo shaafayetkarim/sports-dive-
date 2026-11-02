@@ -65,8 +65,8 @@ export const demoNavigation: Navigation = {
 
 export const demoPages: Record<string, StorePage> = {
   about: {
-    title: 'For the love of the game.',
-    body: '<p>Sports Dive brings your matchday and everyday kit into one place.</p><p>Jackets in stock. 100% authentic original Boots, Turfs, and Backpacks imported on request from any brand around the world.</p>',
+    title: 'NEVER BREAK UP WITH SPORTS.',
+    body: '<p><strong>Born from football. Built on authenticity. Driven by passion.</strong></p><p>In 2015, it started with a single pair of football boots and one uncompromising vision: bring the world’s best to Bangladesh.</p><p>Since day one, we’ve laced up the real ones—supplying 100% genuine boots to inter-school competitors, intra-school dreamers, and underground football players battling on dusty grounds and late-night turfs. As their game grew, our reach grew beyond the touchline. From grassroots ballers and Dhaka club professionals to the Bangladesh National Team, our journey became woven into theirs.</p><p>For over eleven years, SportsDive has stood on a single promise in a market full of compromises: 100% authenticity. From the world’s biggest sporting brands to the feet of Bangladesh’s finest athletes, every pair we’ve sourced carries a story of grit and pride.</p><p>Today, that journey enters a new chapter.</p><p>We are stepping beyond the white lines—uniting football heritage, contemporary streetwear, sneakers, and a culture shaped by the way we live, ride, and move.</p><p>Eleven years in the making. We’ve spent over a decade bringing the world to Bangladesh. Now, it’s time to build something of our own.</p><p><strong>This is SportsDive.</strong></p><p><strong>The next chapter begins now.</strong></p>',
   },
   originals: {
     title: '100% Authentic Originals',

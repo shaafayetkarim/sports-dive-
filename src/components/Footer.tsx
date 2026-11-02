@@ -16,8 +16,8 @@ export function Footer({ navigation }: { navigation: Navigation }) {
         </div>
       </div>
       <div className="footer-links">
-        <Link href="/" className="wordmark">
-          SPORTS DIVE
+        <Link href="/" className="wordmark" aria-label="Sports Dive home">
+          <img src="/brand/sports-dive-black.png" alt="Sports Dive" />
         </Link>
         <div>
           <p className="eyebrow">Products</p>

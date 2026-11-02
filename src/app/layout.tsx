@@ -9,6 +9,7 @@ import './globals.css';
 export const metadata: Metadata = {
   title: { default: 'Sports Dive | For the love of the game', template: '%s | Sports Dive' },
   description: 'Shop jackets, boots, turfs and backpacks at Sports Dive.',
+  icons: { icon: '/icon.png' },
 };
 export default async function Layout({ children }: { children: React.ReactNode }) {
   let navigation;
