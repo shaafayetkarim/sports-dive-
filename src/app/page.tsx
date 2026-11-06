@@ -24,7 +24,7 @@ export default async function Home({
         <div className="hero-overlay" />
         <div className="hero-copy">
           <h1>
-            DON'T BREAKUP
+            DON'T BREAK UP
             <br />
             WITH SPORTS
           </h1>

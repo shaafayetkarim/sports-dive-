@@ -48,20 +48,6 @@ export function ProductForm({ product }: { product: Product }) {
           </div>
         </fieldset>
       ))}
-      <label className="quantity-label" htmlFor="quantity">
-        Quantity
-      </label>
-      <input
-        id="quantity"
-        type="number"
-        min="1"
-        max="99"
-        value={Number.isNaN(quantity) ? '' : quantity}
-        onChange={(e) => {
-          setQuantity(e.target.valueAsNumber);
-          setAdded(false);
-        }}
-      />
       <p className={`stock-message ${variant?.availableForSale ? 'available' : ''}`}>
         {!variant
           ? 'This combination is unavailable. Try another size or colour.'
@@ -69,23 +55,41 @@ export function ProductForm({ product }: { product: Product }) {
             ? 'Available to add to your bag'
             : 'This variant is sold out.'}
       </p>
-      <button
-        className="button add-button"
-        disabled={
-          loading ||
-          busy ||
-          !variant?.availableForSale ||
-          !Number.isInteger(quantity) ||
-          quantity < 1 ||
-          quantity > 99
-        }
-        onClick={async () => {
-          setAdded(false);
-          setAdded(await run({ action: 'add', variantId: variant?.id, quantity }));
-        }}
-      >
-        {busy ? 'ADDING…' : variant?.availableForSale ? 'ADD TO BAG ↗' : 'UNAVAILABLE'}
-      </button>
+      <div className="product-form-actions">
+        <div className="quantity-wrap">
+          <label className="quantity-label" htmlFor="quantity">
+            Qty
+          </label>
+          <input
+            id="quantity"
+            type="number"
+            min="1"
+            max="99"
+            value={Number.isNaN(quantity) ? '' : quantity}
+            onChange={(e) => {
+              setQuantity(e.target.valueAsNumber);
+              setAdded(false);
+            }}
+          />
+        </div>
+        <button
+          className="button add-button"
+          disabled={
+            loading ||
+            busy ||
+            !variant?.availableForSale ||
+            !Number.isInteger(quantity) ||
+            quantity < 1 ||
+            quantity > 99
+          }
+          onClick={async () => {
+            setAdded(false);
+            setAdded(await run({ action: 'add', variantId: variant?.id, quantity }));
+          }}
+        >
+          {busy ? 'ADDING…' : variant?.availableForSale ? 'ADD TO BAG ↗' : 'UNAVAILABLE'}
+        </button>
+      </div>
       {error && (
         <p role="alert" className="form-error">
           {error}

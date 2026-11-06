@@ -31,6 +31,13 @@ export async function generateMetadata({ params }: { params: Promise<{ handle: s
       description: 'NEVER BREAK UP WITH SPORTS. Born from football. Built on authenticity. Driven by passion.',
     };
   }
+  if (['returns', 'return-policy', 'return-and-exchange', 'returns-exchanges'].includes(handle)) {
+    return {
+      title: 'Return & Exchange Policy — Sports Dive',
+      description:
+        'Please review our policy carefully before placing your order. Different conditions apply depending on whether an item is from our in-house line, warehouse stock, or imported specifically per your request.',
+    };
+  }
   const page = await getPage(handle);
   return { title: page?.title || 'Page not found' };
 }
@@ -75,7 +82,6 @@ export default async function ContentPage({ params }: { params: Promise<{ handle
 
         <section className="story-founders">
           <div className="story-founders-header">
-           
             <h2>THE FOUNDERS</h2>
           </div>
           <div className="founders-grid">
@@ -102,6 +108,155 @@ export default async function ContentPage({ params }: { params: Promise<{ handle
             ))}
           </div>
         </section>
+      </article>
+    );
+  }
+
+  if (['returns', 'return-policy', 'return-and-exchange', 'returns-exchanges'].includes(handle)) {
+    return (
+      <article className="content-page policy-page">
+        <p className="eyebrow">SPORTS DIVE / CUSTOMER CARE</p>
+        <h1 className="policy-title">Return &amp; Exchange Policy</h1>
+        <div className="policy-intro">
+          <p>
+            Please review our policy carefully before placing your order. Different conditions apply depending on whether an item is from our in-house line, warehouse stock, or imported specifically per your request.
+          </p>
+        </div>
+
+        <div className="policy-accordion">
+          <details className="policy-accordion-item" open>
+            <summary className="policy-accordion-summary">
+              <h2>In-Person Inspection at Delivery</h2>
+            </summary>
+            <div className="policy-accordion-content">
+              <p className="policy-subtitle">
+                To ensure complete transparency and quick resolution, all orders must be inspected before finalizing delivery.
+              </p>
+              <div className="policy-accordion-body">
+                <div className="policy-item">
+                  <h3>Check on Arrival</h3>
+                  <p>Inspect the product’s physical condition, size, and design in front of the delivery rider.</p>
+                </div>
+                <div className="policy-item">
+                  <h3>On-the-Spot Issues</h3>
+                  <p>If the item is damaged, defective, or incorrect:</p>
+                  <ul className="policy-sublist">
+                    <li>Tell the rider to contact our team immediately while they are present.</li>
+                    <li>Hold off on completing payment until our team provides an approved solution.</li>
+                  </ul>
+                </div>
+                <div className="policy-item">
+                  <h3>Acceptance Finality</h3>
+                  <p>Once an order is accepted and the rider departs, all sales become final, and items cannot be returned or exchanged.</p>
+                </div>
+              </div>
+            </div>
+          </details>
+
+          <details className="policy-accordion-item">
+            <summary className="policy-accordion-summary">
+              <h2>SportsDive Clothing Line</h2>
+            </summary>
+            <div className="policy-accordion-content">
+              <p className="policy-subtitle">
+                Items designed and produced directly under our own brand.
+              </p>
+              <div className="policy-accordion-body">
+                <div className="policy-item">
+                  <h3>Inspection Required</h3>
+                  <p>Verify condition, quality, and fit upon delivery while the rider waits.</p>
+                </div>
+                <div className="policy-item">
+                  <h3>Final Sale Upon Handover</h3>
+                  <p>Once the delivery is accepted, returns and exchanges are strictly unavailable.</p>
+                </div>
+                <div className="policy-item">
+                  <h3>Defects at Handover</h3>
+                  <p>If any manufacturing flaw is found at the moment of delivery, report it immediately before the rider leaves.</p>
+                </div>
+              </div>
+            </div>
+          </details>
+
+          <details className="policy-accordion-item">
+            <summary className="policy-accordion-summary">
+              <h2>Ready-Stock Items</h2>
+            </summary>
+            <div className="policy-accordion-content">
+              <p className="policy-subtitle">
+                Off-the-shelf items fulfilled directly from our existing warehouse inventory.
+              </p>
+              <div className="policy-accordion-body">
+                <div className="policy-item">
+                  <h3>Final Sale Condition</h3>
+                  <p>Once accepted at delivery, all sales are final.</p>
+                </div>
+                <div className="policy-item">
+                  <h3>No Post-Delivery Swaps</h3>
+                  <p>We cannot process returns, exchanges, or refunds for size or preference changes after the rider departs.</p>
+                </div>
+                <div className="policy-item">
+                  <h3>Mismatch Handling</h3>
+                  <p>Confirm the correct product and specifications are present before accepting the package.</p>
+                </div>
+              </div>
+            </div>
+          </details>
+
+          <details className="policy-accordion-item">
+            <summary className="policy-accordion-summary">
+              <h2>Custom Pre-Orders</h2>
+            </summary>
+            <div className="policy-accordion-content">
+              <p className="policy-subtitle">
+                Items sourced, imported, or custom-ordered exclusively for you per your specifications.
+              </p>
+              <div className="policy-accordion-body">
+                <div className="policy-item">
+                  <h3>Custom Procurement</h3>
+                  <p>Pre-ordered goods are brought in exclusively based on your request. Cancellations, refunds, or exchanges for sizing and fit are not accepted once confirmed.</p>
+                </div>
+                <div className="policy-item">
+                  <h3>Size Verification Responsibility</h3>
+                  <p>Customers must double-check measurements prior to ordering, as we cannot exchange items for incorrect fit choices.</p>
+                </div>
+                <div className="policy-item">
+                  <h3>Sizing Consultation</h3>
+                  <p>For preorder sizing questions or fit concerns, consult with our team through email or WhatsApp before placing your order.</p>
+                </div>
+                <div className="policy-item">
+                  <h3>Merchant Fulfillment Errors</h3>
+                  <p>If we deliver an item differing from your confirmed order details:</p>
+                  <ul className="policy-sublist">
+                    <li>We will arrange a return and priority replacement or an exchange at no extra cost.</li>
+                    <li>You must report the mismatch immediately at delivery while the rider is present.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </details>
+
+          <details className="policy-accordion-item">
+            <summary className="policy-accordion-summary">
+              <h2>Sizing Assistance</h2>
+            </summary>
+            <div className="policy-accordion-content">
+              <p className="policy-subtitle">
+                To prevent fit issues before ordering:
+              </p>
+              <div className="policy-accordion-body">
+                <div className="policy-item">
+                  <h3>Size Charts</h3>
+                  <p>Consult our detailed size guides available on each product page.</p>
+                </div>
+                <div className="policy-item">
+                  <h3>Direct Consultation</h3>
+                  <p>Reach out to our support team via email or WhatsApp with your measurements prior to placing an order for personalized guidance.</p>
+                </div>
+              </div>
+            </div>
+          </details>
+        </div>
       </article>
     );
   }

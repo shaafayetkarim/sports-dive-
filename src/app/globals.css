@@ -745,6 +745,19 @@ body:has(.hero) #main {
 }
 .footer-green {
   background: #505555;
+  color: #ffffff;
+}
+.footer-green .eyebrow {
+  color: rgba(255, 255, 255, 0.85);
+}
+.footer-green h2 {
+  color: #ffffff;
+}
+.footer-green a {
+  color: #ffffff;
+}
+.footer-green a:hover {
+  opacity: 0.85;
 }
 .footer-links {
   display: grid;
@@ -1086,19 +1099,28 @@ body:has(.hero) #main {
   background: var(--ink);
   color: #fff;
 }
+.product-form-actions {
+  display: flex;
+  gap: 12px;
+  align-items: flex-end;
+}
+.quantity-wrap {
+  width: 90px;
+  flex-shrink: 0;
+}
 .quantity-label {
   display: block;
   font-size: 13px;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 .product-form input[type='number'] {
-  width: 100px;
+  width: 100%;
   padding: 14px;
 }
 .stock-message {
   font-size: 12px;
   color: #9a5c3c;
-  margin: 22px 0 15px;
+  margin: 18px 0 12px;
 }
 .stock-message.available {
   color: #4c694b;
@@ -1111,7 +1133,10 @@ body:has(.hero) #main {
 .add-button {
   width: 100%;
   font-size: 14px;
-  min-height: 54px;
+  min-height: 52px;
+}
+.product-form-actions .add-button {
+  flex: 1;
 }
 .form-error {
   color: #8b302b;
@@ -1339,6 +1364,210 @@ body:has(.hero) #main {
     gap: 24px;
     max-width: 360px;
     margin: 0 auto;
+  }
+}
+/* Return & Exchange Policy Page - Expandable Accordion */
+.policy-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 80px 28px 120px;
+}
+.policy-page .eyebrow {
+  letter-spacing: 0.12em;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.policy-title {
+  font-size: clamp(32px, 5vw, 52px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 0 0 24px;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.policy-intro {
+  background: #f6f5f1;
+  border-left: 3px solid #505555;
+  padding: 24px 28px;
+  margin-bottom: 48px;
+}
+.policy-intro p {
+  font-size: 16.5px;
+  line-height: 1.75;
+  color: var(--ink);
+  margin: 0;
+  font-weight: 450;
+}
+.policy-accordion {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--line);
+}
+.policy-accordion-item {
+  border-bottom: 1px solid var(--line);
+  transition: background 0.2s ease;
+}
+.policy-accordion-item[open] {
+  background: rgba(0, 0, 0, 0.015);
+}
+.policy-accordion-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 28px 12px;
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+  transition: background 0.2s ease;
+}
+.policy-accordion-summary::-webkit-details-marker {
+  display: none;
+}
+.policy-accordion-summary:hover {
+  background: rgba(0, 0, 0, 0.02);
+}
+.policy-accordion-summary h2 {
+  font-size: clamp(20px, 2.8vw, 24px);
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0;
+  line-height: 1.3;
+  flex: 1;
+}
+.policy-accordion-item > summary::after {
+  content: '+';
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 1;
+  color: var(--ink);
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-left: 20px;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+.policy-accordion-item[open] > summary::after {
+  content: '−';
+  background: var(--ink);
+  color: #ffffff;
+  border-color: var(--ink);
+}
+.policy-accordion-content {
+  padding: 6px 16px 36px;
+  animation: fadeIn 0.25s ease-in-out;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.policy-subtitle {
+  font-size: 16px;
+  line-height: 1.65;
+  color: #505555;
+  margin: 0 0 26px;
+  padding-bottom: 18px;
+  border-bottom: 1px dashed var(--line);
+  font-weight: 450;
+}
+.policy-accordion-body {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.policy-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.policy-item h3 {
+  font-size: 16.5px;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0;
+  line-height: 1.35;
+}
+.policy-item p {
+  font-size: 15.5px;
+  line-height: 1.75;
+  color: #2b2b2b;
+  margin: 0;
+}
+.policy-sublist {
+  list-style: none;
+  margin: 10px 0 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.policy-sublist li {
+  position: relative;
+  padding-left: 20px;
+  font-size: 15.5px;
+  line-height: 1.65;
+  color: #2b2b2b;
+}
+.policy-sublist li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: #505555;
+  font-weight: 600;
+}
+@media (max-width: 800px) {
+  .policy-page {
+    padding: 50px 20px 80px;
+  }
+  .policy-intro {
+    padding: 18px 20px;
+    margin-bottom: 32px;
+  }
+  .policy-intro p {
+    font-size: 15px;
+    line-height: 1.65;
+  }
+  .policy-accordion-summary {
+    padding: 22px 4px;
+  }
+  .policy-accordion-summary h2 {
+    font-size: 18.5px;
+  }
+  .policy-accordion-item > summary::after {
+    width: 32px;
+    height: 32px;
+    font-size: 20px;
+    margin-left: 14px;
+  }
+  .policy-accordion-content {
+    padding: 4px 4px 30px;
+  }
+  .policy-subtitle {
+    font-size: 15px;
+    margin-bottom: 20px;
+    padding-bottom: 14px;
+  }
+  .policy-item h3 {
+    font-size: 15.5px;
+  }
+  .policy-item p,
+  .policy-sublist li {
+    font-size: 14.5px;
+    line-height: 1.65;
   }
 }
 .prose {
@@ -2004,25 +2233,106 @@ body:has(.hero) #main {
     border: 0;
   }
   .breadcrumbs {
-    padding: 20px 18px;
-    font-size: 10px;
+    padding: 8px 16px;
+    font-size: 10.5px;
   }
   .product-detail {
     display: block;
     padding: 0 0 35px;
   }
   .product-info {
-    padding: 30px 22px;
+    padding: 12px 18px 24px;
     max-width: none;
   }
+  .product-info .eyebrow {
+    font-size: 10px;
+    margin-bottom: 2px;
+    line-height: 1.2;
+  }
   .product-info h1 {
-    font-size: 35px;
+    font-size: 21px;
+    margin: 2px 0 6px;
+    line-height: 1.25;
+  }
+  .product-price {
+    font-size: 19px;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .product-form fieldset {
+    margin: 0 0 10px;
+  }
+  .product-form legend {
+    font-size: 11.5px;
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+  .option-pills {
+    gap: 6px;
+  }
+  .option-pills button {
+    min-width: 44px;
+    min-height: 38px;
+    padding: 6px 12px;
+    font-size: 12.5px;
+  }
+  .stock-message {
+    font-size: 11px;
+    margin: 6px 0 10px;
+  }
+  .product-form-actions {
+    display: flex;
+    gap: 8px;
+    align-items: flex-end;
+    margin-top: 4px;
+  }
+  .quantity-wrap {
+    width: 68px;
+    flex-shrink: 0;
+  }
+  .quantity-label {
+    font-size: 11px;
+    margin-bottom: 4px;
+  }
+  .product-form input[type='number'] {
+    width: 100%;
+    height: 46px;
+    padding: 8px;
+    font-size: 15px;
+    text-align: center;
+  }
+  .product-form-actions .add-button {
+    flex: 1;
+    height: 46px;
+    min-height: 46px;
+    font-size: 13.5px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
   }
   .gallery-thumbs {
-    padding: 0 15px;
+    padding: 6px 16px 0;
+    margin-top: 6px;
+    gap: 6px;
+  }
+  .gallery-thumbs button {
+    width: 44px;
+    height: 50px;
+    background: transparent;
   }
   .gallery-main {
-    aspect-ratio: 4/3.2;
+    aspect-ratio: 4/4.8;
+    background: transparent;
+    width: 100%;
+    overflow: hidden;
+  }
+  .gallery-main img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  .card-image {
+    aspect-ratio: 4/5.2;
   }
   .related-section {
     padding-top: 0;
@@ -2246,6 +2556,32 @@ body:has(.hero) #main {
   margin: 0;
 }
 @media (max-width: 768px) {
+  .breadcrumbs {
+    padding: 8px 16px;
+    font-size: 10.5px;
+  }
+  .product-detail {
+    display: block;
+    padding: 0 0 35px;
+  }
+  .product-gallery {
+    width: 100%;
+  }
+  .gallery-main {
+    aspect-ratio: 4/4.8;
+    background: transparent;
+    width: 100%;
+    overflow: hidden;
+  }
+  .gallery-main img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  .card-image {
+    aspect-ratio: 4/5.2;
+  }
   .import-showcase {
     padding: 24px 16px 60px;
     gap: 30px;

@@ -9,50 +9,22 @@ export interface CustomerReview {
 }
 
 export const CUSTOMER_REVIEWS: CustomerReview[] = [
-  {
-    name: 'Jonathan Fernandez',
-    bootModel: "Haaland's Signature Edition Phantom GX",
-    image: '/Reviews/Jonthan%20farnandez%20Hallands%20signature%20edition%20phantom%20gx.jfif',
-  },
-  {
-    name: 'Krishna Rani Sarker',
-    bootModel: 'Nike Mercurial Vapor',
-    image: '/Reviews/Krishna%20Rani%20Sarker.jpeg',
-  },
-  {
-    name: 'Topu Bormon',
-    bootModel: 'Mercurial Vapor 16',
-    image: '/Reviews/Mad%20energy%20mercurial%20Vapor%2016.jpeg',
-  },
-  {
-    name: 'Mamunul Islam',
-    bootModel: 'Stellar Icon F50',
-    image: '/Reviews/Mamunul%20islam%20Steller%20icon%20F50.jfif',
-  },
-  {
-    name: 'Rituporna Chakma',
-    bootModel: 'Mercurial Vapor 1 RGN',
-    image: '/Reviews/Mercurial%20Vapor%20%201%20RGN%20Rituporna%20Chakma.jpeg',
-  },
+
   {
     name: 'Sheikh Morsalin',
     bootModel: 'Mercurial Vapor 16 Elite',
     image: '/Reviews/Mercurial%20Vapor%2016%20elite%20Sheikh%20Morsalin.jpeg',
   },
   {
-    name: 'Mitul Marma',
-    bootModel: 'Predator Pro',
-    image: '/Reviews/mitul%20marma%20Predetor%20Pro.png',
+    name: 'Topu Bormon',
+    bootModel: 'Mercurial Vapor 16',
+    image: '/Reviews/Mad%20energy%20mercurial%20Vapor%2016.jpeg',
   },
+
   {
-    name: 'Mursed Ali',
-    bootModel: 'Phantom GX 2 Elite',
-    image: '/Reviews/Mursed%20Ali%20Phantom%20GX2%20Elite.jpeg',
-  },
-  {
-    name: 'Anisur Rahman Zico',
-    bootModel: 'Nike Mercurial Vapor 16 Elite',
-    image: '/Reviews/Nike%20mercurial%20vapor%2016%20elite%20Anisur%20Rahman%20Zico.jpeg',
+    name: 'Rituporna Chakma',
+    bootModel: 'Mercurial Vapor 1 RGN',
+    image: '/Reviews/Mercurial%20Vapor%20%201%20RGN%20Rituporna%20Chakma.jpeg',
   },
   {
     name: 'Rakib Hossain',
@@ -60,10 +32,48 @@ export const CUSTOMER_REVIEWS: CustomerReview[] = [
     image: '/Reviews/Rakib%20Hossain%20Nike%20Mercural%20Vapor%2017%20Elite%20FG.jpeg',
   },
   {
+    name: 'Mamunul Islam',
+    bootModel: 'Stellar Icon F50',
+    image: '/Reviews/Mamunul%20islam%20Steller%20icon%20F50.jfif',
+  },
+  {
+    name: 'Anisur Rahman Zico',
+    bootModel: 'Nike Mercurial Vapor 16 Elite',
+    image: '/Reviews/Nike%20mercurial%20vapor%2016%20elite%20Anisur%20Rahman%20Zico.jpeg',
+  },
+
+
+
+
+
+  {
+    name: 'Mitul Marma',
+    bootModel: 'Predator Pro',
+    image: '/Reviews/mitul%20marma%20Predetor%20Pro.png',
+  },
+  {
     name: 'Saad Uddin',
     bootModel: 'Nike Mercurial Vapor 16 Elite',
     image: '/Reviews/Saad%20Uddin%20Nike%20Mercurial%20Vapor%2016%20Elite.jpeg',
   },
+  {
+    name: 'Mursed Ali',
+    bootModel: 'Phantom GX 2 Elite',
+    image: '/Reviews/Mursed%20Ali%20Phantom%20GX2%20Elite.jpeg',
+  },
+
+  {
+    name: 'Krishna Rani Sarker',
+    bootModel: 'Nike Mercurial Vapor',
+    image: '/Reviews/Krishna%20Rani%20Sarker.jpeg',
+  },
+  {
+    name: 'Jonathan Fernandez',
+    bootModel: "Haaland's Signature Edition Phantom GX",
+    image: '/Reviews/Jonthan%20farnandez%20Hallands%20signature%20edition%20phantom%20gx.jfif',
+  },
+
+
   {
     name: 'Suleyman Diabate',
     bootModel: 'Mercurial Vapor 17 Elite',
