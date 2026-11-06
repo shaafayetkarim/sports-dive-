@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import sanitizeHtml from 'sanitize-html';
 import { getPage } from '@/lib/shopify';
+import { ContactForm } from '@/components/ContactForm';
 
 const FOUNDERS = [
   {
@@ -36,6 +37,13 @@ export async function generateMetadata({ params }: { params: Promise<{ handle: s
       title: 'Return & Exchange Policy — Sports Dive',
       description:
         'Please review our policy carefully before placing your order. Different conditions apply depending on whether an item is from our in-house line, warehouse stock, or imported specifically per your request.',
+    };
+  }
+  if (['contact', 'contact-us', 'get-in-touch'].includes(handle)) {
+    return {
+      title: 'Contact Us — Sports Dive',
+      description:
+        'Get in touch with the Sports Dive team. Contact us via Shopify messaging, email, or our contact form.',
     };
   }
   const page = await getPage(handle);
@@ -257,6 +265,19 @@ export default async function ContentPage({ params }: { params: Promise<{ handle
             </div>
           </details>
         </div>
+      </article>
+    );
+  }
+
+  if (['contact', 'contact-us', 'get-in-touch'].includes(handle)) {
+    return (
+      <article className="content-page contact-page">
+        <p className="eyebrow">SPORTS DIVE / GET IN TOUCH</p>
+        <h1 className="contact-title">We’re on your team.</h1>
+        <p className="contact-lead">
+          Have a question about our collections, sizing, pre-orders, or delivery? Reach out to us directly on WhatsApp or email.
+        </p>
+        <ContactForm />
       </article>
     );
   }

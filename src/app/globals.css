@@ -1176,6 +1176,56 @@ body:has(.hero) #main {
   margin-top: 16px;
   font-size: 12px;
 }
+/* Specifications table */
+.product-specs {
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+.spec-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 12px;
+}
+.spec-row:last-child {
+  border-bottom: none;
+}
+.spec-row dt {
+  color: var(--muted);
+  font-weight: 400;
+  flex-shrink: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 10px;
+}
+.spec-row dd {
+  margin: 0;
+  text-align: right;
+  font-size: 12px;
+  color: var(--ink);
+}
+/* Multi-value tags in spec rows */
+.spec-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  justify-content: flex-end;
+}
+.spec-tag {
+  display: inline-block;
+  padding: 2px 9px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  font-size: 11px;
+  color: var(--ink);
+  line-height: 1.6;
+  letter-spacing: 0.03em;
+}
 .related-section {
   padding: 30px 0 50px;
 }
@@ -2712,3 +2762,108 @@ body:has(.hero) #main {
     height: 38px;
   }
 }
+
+/* ==========================================================================
+   Contact Page, Shopify Messaging & Form
+   ========================================================================== */
+.contact-page {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 50px 24px 80px;
+}
+.contact-title {
+  font-size: clamp(34px, 4.5vw, 60px);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  margin: 12px 0 16px;
+  color: var(--ink);
+}
+.contact-lead {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--muted);
+  max-width: 680px;
+  margin-bottom: 40px;
+}
+.contact-wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 36px;
+}
+.contact-channels {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+.channel-card {
+  display: flex;
+  gap: 16px;
+  padding: 24px;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  align-items: flex-start;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+.channel-card:hover {
+  border-color: var(--ink);
+}
+.channel-card.messaging-card {
+  background: #f7f6f0;
+  border-color: #d6d3c8;
+}
+.channel-icon {
+  font-size: 24px;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.channel-card h3 {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-bottom: 6px;
+  color: var(--ink);
+}
+.channel-card p {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+.button-chat {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 18px;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  background: var(--ink);
+  color: #fff;
+  border: 1px solid var(--ink);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.button-chat:hover {
+  background: transparent;
+  color: var(--ink);
+}
+.contact-link {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  display: inline-block;
+  margin-top: 4px;
+}
+.contact-link:hover {
+  color: var(--muted);
+}
+@media (max-width: 768px) {
+  .contact-page {
+    padding: 35px 18px 60px;
+  }
+}
+

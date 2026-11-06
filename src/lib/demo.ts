@@ -37,6 +37,7 @@ export const demoProducts: Product[] = jacketItems.map((item, i) => {
     description:
       'A premium Sports Dive jacket engineered for training, warmup, and sideline performance with lightweight water resistance.',
     productType: 'Jackets',
+    category: { id: 'gid://shopify/TaxonomyCategory/aa-1-10-2-12', name: 'Jackets' },
     availableForSale: true,
     featuredImage: image,
     images: { nodes: [image] },

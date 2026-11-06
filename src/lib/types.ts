@@ -10,12 +10,23 @@ export type Variant = {
   image: Image | null;
   selectedOptions: { name: string; value: string }[];
 };
+export type TaxonomyCategory = { id: string; name: string };
+export type Metafield = {
+  key: string;
+  namespace: string;
+  value: string;
+  type: string;
+  reference?: { fields: { key: string; value: string }[] } | null;
+  references?: { nodes: { fields: { key: string; value: string }[] }[] } | null;
+} | null;
 export type Product = {
   id: string;
   handle: string;
   title: string;
   description: string;
   productType: string;
+  category?: TaxonomyCategory | null;
+  metafields?: Metafield[];
   availableForSale: boolean;
   featuredImage: Image | null;
   images: { nodes: Image[] };

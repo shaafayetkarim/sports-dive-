@@ -11,7 +11,7 @@ export function ProductCard({ product: p }: { product: Product }) {
         {p.featuredImage ? (
           <img src={p.featuredImage.url} alt={p.featuredImage.altText || p.title} loading="lazy" />
         ) : (
-          <div className="no-image">{p.productType || p.title}</div>
+          <div className="no-image">{p.category?.name || p.productType || p.title}</div>
         )}
         {p.images.nodes[1] && (
           <img className="alternate-image" src={p.images.nodes[1].url} alt="" loading="lazy" />
@@ -27,7 +27,7 @@ export function ProductCard({ product: p }: { product: Product }) {
         <Link href={`/products/${p.handle}`}>
           <h3>{p.title}</h3>
         </Link>
-        <p className="muted">{p.productType}</p>
+        <p className="muted">{p.category?.name || p.productType}</p>
         <div>
           {money(price)} {sale && <del>{money(compare)}</del>}
         </div>

@@ -7,7 +7,13 @@ export function Footer({ navigation }: { navigation: Navigation }) {
         <div>
           <p className="eyebrow">QUESTIONS OR FEEDBACK?</p>
           <h2>We’re on your team.</h2>
-          <Link href="/pages/contact">Get in touch ↗</Link>
+          <a
+            href="https://wa.me/8801763572148?text=Hi%20SportsDive%2C%20I%20have%20a%20question"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Ask anything ↗
+          </a>
         </div>
         <div className="footer-green">
           <p className="eyebrow">GET YOUR GAME ON</p>
