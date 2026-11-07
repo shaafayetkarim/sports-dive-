@@ -126,7 +126,7 @@ export function ReviewCarousel() {
     <section className="reviews-section" aria-label="Customer Reviews">
       <div className="reviews-header">
         <div>
-          <p className="eyebrow">COMMUNITY &amp; PLAYERS</p>
+
           <h2>OUR CUSTOMERS</h2>
         </div>
         <div className="reviews-controls" aria-label="Carousel navigation">

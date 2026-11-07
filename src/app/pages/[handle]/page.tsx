@@ -39,11 +39,18 @@ export async function generateMetadata({ params }: { params: Promise<{ handle: s
         'Please review our policy carefully before placing your order. Different conditions apply depending on whether an item is from our in-house line, warehouse stock, or imported specifically per your request.',
     };
   }
+  if (['shipping', 'shipping-policy', 'delivery', 'delivery-information'].includes(handle)) {
+    return {
+      title: 'Shipping & Delivery — Sports Dive',
+      description:
+        'Delivery charges and timelines across Bangladesh. Inside Dhaka, Dhaka Suburban, Outside Dhaka, and pre-order fulfillment terms.',
+    };
+  }
   if (['contact', 'contact-us', 'get-in-touch'].includes(handle)) {
     return {
       title: 'Contact Us — Sports Dive',
       description:
-        'Get in touch with the Sports Dive team. Contact us via Shopify messaging, email, or our contact form.',
+        'Get in touch with the Sports Dive team via WhatsApp or email.',
     };
   }
   const page = await getPage(handle);
@@ -260,6 +267,110 @@ export default async function ContentPage({ params }: { params: Promise<{ handle
                 <div className="policy-item">
                   <h3>Direct Consultation</h3>
                   <p>Reach out to our support team via email or WhatsApp with your measurements prior to placing an order for personalized guidance.</p>
+                </div>
+              </div>
+            </div>
+          </details>
+        </div>
+      </article>
+    );
+  }
+
+  if (['shipping', 'shipping-policy', 'delivery', 'delivery-information'].includes(handle)) {
+    return (
+      <article className="content-page policy-page">
+        <p className="eyebrow">SPORTS DIVE / CUSTOMER CARE</p>
+        <h1 className="policy-title">Shipping &amp; Delivery</h1>
+        <div className="policy-intro">
+          <p>
+            We provide nationwide delivery across Bangladesh. Review our delivery charges, estimated timelines, and pre-order terms below.
+          </p>
+        </div>
+
+        <div className="policy-accordion">
+          <details className="policy-accordion-item" open>
+            <summary className="policy-accordion-summary">
+              <h2>Inside Dhaka</h2>
+            </summary>
+            <div className="policy-accordion-content">
+              <p className="policy-subtitle">
+                Standard delivery within Dhaka metropolitan city.
+              </p>
+              <div className="policy-accordion-body">
+                <div className="policy-item">
+                  <h3>Delivery Charge</h3>
+                  <p>৳70.00</p>
+                </div>
+                <div className="policy-item">
+                  <h3>Estimated Timeline</h3>
+                  <p>2 to 3 business days</p>
+                </div>
+              </div>
+            </div>
+          </details>
+
+          <details className="policy-accordion-item">
+            <summary className="policy-accordion-summary">
+              <h2>Dhaka Suburban</h2>
+            </summary>
+            <div className="policy-accordion-content">
+              <p className="policy-subtitle">
+                Coverage areas include Demra, Savar, Ashulia, Keraniganj, Narayanganj, Gazipur, Dohar, Nawabganj, and Rupganj.
+              </p>
+              <div className="policy-accordion-body">
+                <div className="policy-item">
+                  <h3>Delivery Charge</h3>
+                  <p>৳100.00</p>
+                </div>
+                <div className="policy-item">
+                  <h3>Estimated Timeline</h3>
+                  <p>3 to 5 business days</p>
+                </div>
+              </div>
+            </div>
+          </details>
+
+          <details className="policy-accordion-item">
+            <summary className="policy-accordion-summary">
+              <h2>Outside Dhaka</h2>
+            </summary>
+            <div className="policy-accordion-content">
+              <p className="policy-subtitle">
+                Nationwide delivery across all districts outside Dhaka division.
+              </p>
+              <div className="policy-accordion-body">
+                <div className="policy-item">
+                  <h3>Delivery Charge</h3>
+                  <p>৳130.00</p>
+                </div>
+                <div className="policy-item">
+                  <h3>Estimated Timeline</h3>
+                  <p>5 to 8 business days</p>
+                </div>
+              </div>
+            </div>
+          </details>
+
+          <details className="policy-accordion-item">
+            <summary className="policy-accordion-summary">
+              <h2>Pre-Orders</h2>
+            </summary>
+            <div className="policy-accordion-content">
+              <p className="policy-subtitle">
+                Items sourced, imported, or ordered specifically upon request.
+              </p>
+              <div className="policy-accordion-body">
+                <div className="policy-item">
+                  <h3>Warehouse Arrival &amp; Dispatch</h3>
+                  <p>
+                    Once your pre-ordered product arrives at our facility and passes physical authenticity inspection, standard domestic delivery timelines apply based on your location.
+                  </p>
+                </div>
+                <div className="policy-item">
+                  <h3>Transit Timelines Upon Arrival</h3>
+                  <p>
+                    2 to 3 business days inside Dhaka, 3 to 5 business days for Dhaka suburban areas, and 5 to 8 business days outside Dhaka.
+                  </p>
                 </div>
               </div>
             </div>

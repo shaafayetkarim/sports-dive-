@@ -49,7 +49,17 @@ export function Footer({ navigation }: { navigation: Navigation }) {
       </div>
       <div className="footer-bottom">
         <span>© {new Date().getFullYear()} Sports Dive</span>
-        <span>FOR THE LOVE OF THE GAME.</span>
+        <span>
+          FOR THE LOVE OF THE GAME. By{' '}
+          <a
+            href="https://wa.me/8801788707374"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="footer-credit-link"
+          >
+            Shafayet Karim
+          </a>
+        </span>
         <a href="#main">Back to top ↑</a>
       </div>
     </footer>

@@ -4,6 +4,7 @@ import { getCollection, getNavigation } from '@/lib/shopify';
 import { SORTS, type Sort } from '@/lib/config';
 import { ProductCard } from '@/components/ProductCard';
 import { Filters, SortControl } from '@/components/CollectionControls';
+import { BrandLogos } from '@/components/BrandLogos';
 export async function generateMetadata({ params }: { params: Promise<{ handle: string }> }) {
   const { handle } = await params;
   return {
@@ -23,16 +24,17 @@ export default async function CollectionPage({
   const { handle } = await params;
   if (!/^[a-z0-9-]{1,150}$/.test(handle)) notFound();
 
-  const isImportCategory = ['boots', 'turfs', 'backpacks'].includes(handle);
+  const isImportCategory = ['boots', 'turfs', 'backpacks', 'bags'].includes(handle);
   if (isImportCategory) {
     const nav = await getNavigation();
     const currentTitle =
-      { boots: 'Boots', turfs: 'Turfs', backpacks: 'Backpacks' }[handle] ||
+      { boots: 'Boots', turfs: 'Turfs', backpacks: 'Backpacks', bags: 'Bags' }[handle] ||
       handle[0].toUpperCase() + handle.slice(1);
     return (
+      
       <>
+      
         <div className="collection-title">
-          <p className="eyebrow">100% AUTHENTIC GLOBAL SOURCING</p>
           <h1>{currentTitle}</h1>
           <p>We import originals from any brand around the world — 100% authentic.</p>
         </div>
@@ -48,7 +50,7 @@ export default async function CollectionPage({
             {nav.categories.map((c) => (
               <Link
                 key={c.handle}
-                className={handle === c.handle ? 'active' : ''}
+                className={handle === c.handle || (c.handle === 'backpacks' && handle === 'bags') ? 'active' : ''}
                 href={`/collections/${c.handle}`}
               >
                 {c.title}
@@ -57,15 +59,15 @@ export default async function CollectionPage({
           </div>
           <div />
         </div>
+        <BrandLogos />
         <div className="import-showcase">
           <div className="import-hero-card">
-            <span className="import-eyebrow">ORIGINAL & VERIFIED</span>
             <h2>We import originals from any brand around the world 100 percent authentic.</h2>
             <p className="import-description">
               Looking for authentic {currentTitle.toLowerCase()} from Nike, Adidas, Puma, Mizuno, or any other brand around the world? We source guaranteed 100% original, brand-new products directly from authorized global retailers and flagship stores.
             </p>
             <div className="import-cta-group">
-              <Link href="/pages/contact" className="button">
+              <Link href="/pages/contact" className="button button-red">
                 REQUEST AN IMPORT <span>↗</span>
               </Link>
               <Link href="/collections/jackets" className="button button-secondary">
@@ -73,19 +75,20 @@ export default async function CollectionPage({
               </Link>
             </div>
           </div>
+          
           <div className="import-features-grid">
             <div className="import-feature-box">
-              <span className="import-feature-tag">BRANDS</span>
+
               <h3>Any Brand Around The World</h3>
               <p>Nike, Adidas, Puma, Mizuno, New Balance, Under Armour, and elite specialist brands worldwide.</p>
             </div>
             <div className="import-feature-box">
-              <span className="import-feature-tag">AUTHENTICITY</span>
+
               <h3>100% Authentic Always</h3>
               <p>Every piece is guaranteed 100% genuine with factory tags, original box, and verifiable serial numbers.</p>
             </div>
             <div className="import-feature-box">
-              <span className="import-feature-tag">ON DEMAND</span>
+
               <h3>Sourced Exactly To Your Size</h3>
               <p>Tell us the model, edition, and size you want. We manage global sourcing, customs clearance, and prompt delivery.</p>
             </div>
@@ -94,21 +97,21 @@ export default async function CollectionPage({
             <p className="eyebrow">HOW TO ORDER</p>
             <div className="process-steps">
               <div className="step-item">
-                <span className="step-num">01</span>
+
                 <div>
                   <h4>Tell Us What You Want</h4>
                   <p>Send us the brand, model, colorway, and your size.</p>
                 </div>
               </div>
               <div className="step-item">
-                <span className="step-num">02</span>
+
                 <div>
                   <h4>We Source & Confirm</h4>
                   <p>We check authentic global stock, price, and estimated delivery.</p>
                 </div>
               </div>
               <div className="step-item">
-                <span className="step-num">03</span>
+
                 <div>
                   <h4>100% Authentic Delivery</h4>
                   <p>Your original imported gear is delivered straight to you.</p>

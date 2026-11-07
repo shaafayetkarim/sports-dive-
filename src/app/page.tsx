@@ -24,14 +24,18 @@ export default async function Home({
         <div className="hero-overlay" />
         <div className="hero-copy">
           <h1>
-            DON'T BREAK UP
-            <br />
-            WITH SPORTS
+            <span className="hero-title-line">DON&apos;T BREAK UP</span>
+            <span className="hero-title-line">WITH SPORTS</span>
           </h1>
           <p>YOUR KIT. YOUR GAME. YOUR NEXT MOVE.</p>
-          <Link className="button" href="/collections/all-products">
-            SHOP PRODUCTS <span>↗</span>
-          </Link>
+          <nav className="hero-actions" aria-label="Primary quick links">
+            <Link className="button" href="/collections/all-products" title="Our Products">
+              OUR PRODUCTS <span>↗</span>
+            </Link>
+            <Link className="button button-red" href="/pages/contact" title="Request an Import">
+              REQUEST AN IMPORT <span>↗</span>
+            </Link>
+          </nav>
         </div>
         <span className="hero-index">SPORTS DIVE / THE COLLECTION</span>
       </section>
@@ -103,7 +107,7 @@ export default async function Home({
       <section className="category-section">
         <div className="section-heading">
           <h2>FIND YOUR NEXT MOVE</h2>
-          <span>THE SPORTS DIVE LINE-UP</span>
+
         </div>
         <div className="editorial-grid">
           {navigation.categories.slice(0, 4).map((c) => (
@@ -133,7 +137,6 @@ export default async function Home({
           <VideoBackground className="story-video" src={VIDEOS.a} />
         </Link>
         <div className="story-copy">
-          <p className="eyebrow">BUILT AROUND YOUR GAME</p>
           <h2>
             SHOW UP.
             <br />
@@ -151,7 +154,6 @@ export default async function Home({
       </section>
       <section className="story-split reverse">
         <div className="story-copy">
-          <p className="eyebrow">100% AUTHENTIC GLOBAL SOURCING</p>
           <h2>
             ATTENTION
             <br />

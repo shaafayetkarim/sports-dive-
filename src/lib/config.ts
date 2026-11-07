@@ -25,3 +25,10 @@ export const VIDEOS = {
   a: process.env.NEXT_PUBLIC_SHOPIFY_VIDEO_A_URL || '/a.mp4',
   b: process.env.NEXT_PUBLIC_SHOPIFY_VIDEO_B_URL || '/b.MP4',
 };
+
+export const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : 'https://sportsdive.com');
+

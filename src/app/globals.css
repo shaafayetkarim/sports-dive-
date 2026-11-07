@@ -159,6 +159,23 @@ del {
 .button:hover {
   background: #505555;
 }
+.button.button-red,
+.button-red {
+  background: #dc2626;
+  border: 1px solid #dc2626;
+  color: #fff;
+}
+.button.button-red:hover,
+.button-red:hover {
+  background: #b91c1c;
+  border-color: #b91c1c;
+  color: #fff;
+}
+.button.button-red:active,
+.button-red:active {
+  background: #991b1b;
+  border-color: #991b1b;
+}
 .button span {
   margin-left: 24px;
 }
@@ -435,10 +452,19 @@ body:has(.hero) #main {
   letter-spacing: -0.065em;
   margin-bottom: 24px;
 }
+.hero-title-line {
+  display: block;
+}
 .hero-copy > p {
   font-size: clamp(13px, 1.6vw, 24px);
   margin-bottom: 26px;
   letter-spacing: -0.03em;
+}
+.hero-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
 }
 .hero-copy .button {
   min-width: 180px;
@@ -798,6 +824,14 @@ body:has(.hero) #main {
   padding: 24px 35px;
   border-top: 1px solid var(--line);
   font-size: 12px;
+}
+.footer-credit-link {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: opacity 0.2s ease;
+}
+.footer-credit-link:hover {
+  opacity: 0.7;
 }
 .demo-notice {
   padding: 12px 20px;
@@ -2069,9 +2103,13 @@ body:has(.hero) #main {
     height: 34px;
   }
   .hero-copy h1 {
-    font-size: 55px;
-    letter-spacing: -0.06em;
+    font-size: clamp(32px, 9.2vw, 46px);
+    line-height: 0.98;
+    letter-spacing: -0.055em;
     margin-bottom: 18px;
+  }
+  .hero-title-line {
+    white-space: nowrap;
   }
   .hero-copy p {
     max-width: 250px;
@@ -2079,11 +2117,15 @@ body:has(.hero) #main {
     line-height: 1.6;
     margin-bottom: 20px;
   }
+  .hero-actions {
+    gap: 10px;
+  }
   .hero-copy .button {
     min-height: 43px;
-    min-width: 155px;
+    min-width: 140px;
     font-size: 10px;
-    padding: 12px 18px;
+    padding: 12px 16px;
+    gap: 16px;
   }
   .hero-index {
     bottom: 30px;
@@ -2222,7 +2264,11 @@ body:has(.hero) #main {
     font-size: 9px;
   }
   .footer-bottom > span:nth-child(2) {
-    display: none;
+    display: block;
+    width: 100%;
+    order: 3;
+    text-align: center;
+    margin-top: 6px;
   }
   .collection-title {
     padding: 30px 20px 25px;
@@ -2542,6 +2588,39 @@ body:has(.hero) #main {
   background: var(--ink);
   color: #fff;
 }
+/* Import Brand Logos Showcase */
+.import-brands-section {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 16px;
+  align-items: center;
+  justify-items: center;
+  padding: 30px 24px;
+  background: #fff;
+  border: 1px solid var(--line);
+}
+.import-brand-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 48px;
+  color: #2e2424;
+  opacity: 0.85;
+  transition: opacity 0.2s ease, transform 0.2s ease, color 0.2s ease;
+}
+.import-brand-logo:hover {
+  opacity: 1;
+  color: #000;
+  transform: translateY(-2px);
+}
+.import-brand-logo svg {
+  max-width: 64px;
+  max-height: 34px;
+  width: auto;
+  height: 100%;
+  object-fit: contain;
+}
 .import-features-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -2606,6 +2685,9 @@ body:has(.hero) #main {
   margin: 0;
 }
 @media (max-width: 768px) {
+  .hero-title-line {
+    white-space: nowrap;
+  }
   .breadcrumbs {
     padding: 8px 16px;
     font-size: 10.5px;
@@ -2638,6 +2720,18 @@ body:has(.hero) #main {
   }
   .import-hero-card {
     padding: 36px 22px;
+  }
+  .import-brands-section {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px 10px;
+    padding: 22px 14px;
+  }
+  .import-brand-logo {
+    height: 40px;
+  }
+  .import-brand-logo svg {
+    max-width: 52px;
+    max-height: 28px;
   }
 }
 /* Customer Reviews Carousel */
