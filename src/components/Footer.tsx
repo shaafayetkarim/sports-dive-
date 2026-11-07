@@ -50,7 +50,7 @@ export function Footer({ navigation }: { navigation: Navigation }) {
       <div className="footer-bottom">
         <span>© {new Date().getFullYear()} Sports Dive</span>
         <span>
-          FOR THE LOVE OF THE GAME. By{' '}
+          By{' '}
           <a
             href="https://wa.me/8801788707374"
             target="_blank"
