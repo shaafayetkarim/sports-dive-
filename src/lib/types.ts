@@ -24,6 +24,7 @@ export type Product = {
   handle: string;
   title: string;
   description: string;
+  descriptionHtml?: string;
   productType: string;
   category?: TaxonomyCategory | null;
   metafields?: Metafield[];

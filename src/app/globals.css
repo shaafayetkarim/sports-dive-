@@ -1197,14 +1197,106 @@ body:has(.hero) #main {
   margin-top: 35px;
 }
 .product-info details summary {
-  font-size: 14px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #000;
 }
 .product-description {
-  white-space: pre-line;
-  line-height: 1.8;
-  font-size: 14px;
-  color: var(--muted);
+  line-height: 1.75;
+  font-size: 16px;
+  color: #000;
   margin-top: 20px;
+  word-break: break-word;
+  white-space: pre-wrap;
+}
+.product-description,
+.product-description p,
+.product-description span,
+.product-description li,
+.product-description div {
+  color: #000;
+}
+.product-description.is-plain {
+  white-space: pre-wrap;
+}
+.product-description p {
+  margin: 0 0 16px 0;
+  line-height: 1.75;
+  white-space: pre-wrap;
+}
+.product-description p:last-child {
+  margin-bottom: 0;
+}
+.product-description p:empty,
+.product-description p:has(> br:only-child) {
+  min-height: 1.4em;
+}
+.product-description ul,
+.product-description ol {
+  margin: 0 0 16px 0;
+  padding-left: 22px;
+  white-space: normal;
+}
+.product-description li {
+  margin-bottom: 6px;
+  line-height: 1.7;
+}
+.product-description li:last-child {
+  margin-bottom: 0;
+}
+.product-description strong,
+.product-description b {
+  color: #000;
+  font-weight: 700;
+}
+.product-description em,
+.product-description i {
+  font-style: italic;
+}
+.product-description h1,
+.product-description h2,
+.product-description h3,
+.product-description h4 {
+  color: var(--ink);
+  font-weight: 500;
+  margin: 22px 0 10px 0;
+  line-height: 1.3;
+  white-space: normal;
+}
+.product-description h1:first-child,
+.product-description h2:first-child,
+.product-description h3:first-child,
+.product-description h4:first-child {
+  margin-top: 0;
+}
+.product-description a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  color: var(--ink);
+}
+.product-description table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 13px;
+  white-space: normal;
+}
+.product-description th,
+.product-description td {
+  border: 1px solid var(--line);
+  padding: 8px 12px;
+  text-align: left;
+}
+.product-description th {
+  background: #f7f6f3;
+  color: var(--ink);
+  font-weight: 600;
+}
+.product-description img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  margin: 12px 0;
 }
 .product-info details > p {
   margin-top: 16px;

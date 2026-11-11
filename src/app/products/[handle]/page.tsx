@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import type { Metadata } from 'next';
+import sanitizeHtml from 'sanitize-html';
 import { getProduct, getProducts } from '@/lib/shopify';
 import { ProductForm } from '@/components/ProductForm';
 import { ProductGallery } from '@/components/ProductGallery';
@@ -23,6 +24,18 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
   } catch {}
   const categoryLabel = p.category?.name || p.productType || null;
   const specs = getProductSpecs(p.category?.name || null, p.metafields);
+  const descriptionHtml = p.descriptionHtml
+    ? sanitizeHtml(p.descriptionHtml, {
+        allowedTags: sanitizeHtml.defaults.allowedTags.concat(['img', 'br']),
+        allowedAttributes: {
+          ...sanitizeHtml.defaults.allowedAttributes,
+          '*': ['style', 'class'],
+          a: ['href', 'name', 'target', 'rel'],
+          img: ['src', 'alt', 'width', 'height', 'loading'],
+        },
+        allowedSchemes: ['https', 'http', 'mailto', 'tel'],
+      })
+    : null;
   return (
     <>
       <div className="breadcrumbs">
@@ -43,9 +56,16 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
           <ProductForm product={p} />
           <details open>
             <summary>Product details</summary>
-            <p className="product-description">
-              {p.description || 'More product details will be available soon.'}
-            </p>
+            {descriptionHtml ? (
+              <div
+                className="product-description"
+                dangerouslySetInnerHTML={{ __html: descriptionHtml }}
+              />
+            ) : (
+              <div className="product-description is-plain">
+                {p.description || 'More product details will be available soon.'}
+              </div>
+            )}
           </details>
           {specs.length > 0 && (
             <details>
