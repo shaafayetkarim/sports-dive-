@@ -7,20 +7,17 @@ const FOUNDERS = [
   {
     name: 'Autish Chakma (Anzo)',
     role: 'Co-Founder',
-    email: null,
     image: '/Founders/autish-chakma.jpg',
-  },
-  {
-    name: 'Sadman Ahmed',
-    role: 'Co-Founder',
-    email: 'ahmed.sadman03@gmail.com',
-    image: '/Founders/sadman-ahmed.jpg',
   },
   {
     name: 'Sifat Mahbub',
     role: 'Co-Founder',
-    email: 'sifatmahbub18@gmail.com',
-    image: '/Founders/sifat-mahbub.jpg',
+    image: '/Founders/sifat-mahbub1.jpg',
+  },
+  {
+    name: 'Sadman Ahmed',
+    role: 'Co-Founder',
+    image: '/Founders/sadman-ahmed.jpg',
   },
 ];
 
@@ -113,11 +110,6 @@ export default async function ContentPage({ params }: { params: Promise<{ handle
                 <div className="founder-meta">
                   <h3 className="founder-name">{founder.name}</h3>
                   <p className="founder-role">{founder.role}</p>
-                  {founder.email && (
-                    <a href={`mailto:${founder.email}`} className="founder-email">
-                      {founder.email}
-                    </a>
-                  )}
                 </div>
               </div>
             ))}

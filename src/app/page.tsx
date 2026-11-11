@@ -160,7 +160,7 @@ export default async function Home({
             TO DETAIL.
           </h2>
           <p>
-            We import originals from any brand around the world 100 percent authentic. Boots for the pitch, turfs for the court, and backpacks for everything in between.
+            Our jackets are thoughtfully designed, carefully sourced and proudly made in Bangladesh with meticulous attention to detail, quality craftsmanship and comfort in every stitch.
           </p>
         </div>
         <Link className="story-visual" href="/collections/boots" aria-label="Explore boots and turfs">
