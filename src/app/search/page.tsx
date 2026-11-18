@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { getProducts } from '@/lib/shopify';
 import { ProductCard } from '@/components/ProductCard';
+import { PixelSearch } from '@/components/PixelSearch';
 export const metadata = { title: 'Search' };
 export default async function Search({
   searchParams,
@@ -19,6 +20,7 @@ export default async function Search({
     : null;
   return (
     <section className="search-page">
+      {q && <PixelSearch query={q} contentIds={products?.nodes.map((p) => p.id)} />}
       <p className="eyebrow">FIND YOUR NEXT FAVOURITE</p>
       <h1>What’s your game?</h1>
       <form action="/search" className="search-form">

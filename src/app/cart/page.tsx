@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
 import { useCart } from '@/components/CartProvider';
-import { fbPixelEvent } from '@/components/MetaPixel';
+import { fbPixelEvent, extractId, getPixelContentIds } from '@/components/MetaPixel';
 import { money } from '@/lib/types';
 export default function CartPage() {
   const { cart, busy, error, run, loading, refresh } = useCart();
@@ -97,19 +97,32 @@ export default function CartPage() {
               className="button"
               disabled={busy || loading}
               onClick={() => {
+                const contents = cart.lines.nodes.map((l) => ({
+                  id: extractId(l.merchandise.id),
+                  quantity: l.quantity,
+                  item_price: Number(l.cost.totalAmount.amount) / Math.max(1, l.quantity),
+                }));
+                const contentIds = Array.from(
+                  new Set(cart.lines.nodes.flatMap((l) => getPixelContentIds(l.merchandise.id)))
+                );
+                const totalValue = Number(cart.cost.subtotalAmount.amount);
+                const currency = cart.cost.subtotalAmount.currencyCode;
+
                 fbPixelEvent('InitiateCheckout', {
-                  content_ids: cart.lines.nodes.map((l) => l.merchandise.id),
+                  content_ids: contentIds,
                   content_type: 'product',
+                  contents,
                   num_items: cart.totalQuantity,
-                  value: Number(cart.cost.subtotalAmount.amount),
-                  currency: cart.cost.subtotalAmount.currencyCode,
+                  value: totalValue,
+                  currency,
                 });
                 fbPixelEvent('Purchase', {
-                  content_ids: cart.lines.nodes.map((l) => l.merchandise.id),
+                  content_ids: contentIds,
                   content_type: 'product',
+                  contents,
                   num_items: cart.totalQuantity,
-                  value: Number(cart.cost.subtotalAmount.amount),
-                  currency: cart.cost.subtotalAmount.currencyCode,
+                  value: totalValue,
+                  currency,
                 });
                 run({ action: 'checkout' });
               }}

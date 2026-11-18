@@ -1,3 +1,7 @@
+'use client';
+
+import { fbPixelEvent } from './MetaPixel';
+
 export function ContactForm() {
   return (
     <div className="contact-wrapper">
@@ -14,6 +18,7 @@ export function ContactForm() {
               target="_blank"
               rel="noopener noreferrer"
               className="button button-chat"
+              onClick={() => fbPixelEvent('Contact', { content_name: 'WhatsApp' })}
             >
               CHAT ON WHATSAPP ↗
             </a>
@@ -25,7 +30,11 @@ export function ContactForm() {
           <div>
             <h3>Email Us</h3>
             <p>Prefer to reach out by email? Write to our team anytime.</p>
-            <a href="mailto:sportsdivebd@gmail.com" className="contact-link">
+            <a
+              href="mailto:sportsdivebd@gmail.com"
+              className="contact-link"
+              onClick={() => fbPixelEvent('Contact', { content_name: 'Email' })}
+            >
               sportsdivebd@gmail.com ↗
             </a>
           </div>

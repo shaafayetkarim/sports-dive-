@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { useCart } from './CartProvider';
-import { fbPixelEvent } from './MetaPixel';
+import { fbPixelEvent, extractId, getPixelContentIds } from './MetaPixel';
 import { money, type Product } from '@/lib/types';
 export function ProductForm({ product }: { product: Product }) {
   const initial =
@@ -87,13 +87,22 @@ export function ProductForm({ product }: { product: Product }) {
             setAdded(false);
             const success = await run({ action: 'add', variantId: variant?.id, quantity });
             if (success) {
+              const activeId = variant?.id || product.id;
+              const cleanId = extractId(activeId);
+              const itemPrice = Number(variant?.price.amount || product.priceRange.minVariantPrice.amount);
               fbPixelEvent('AddToCart', {
                 content_name: product.title,
-                content_ids: [variant?.id || product.id],
+                content_ids: getPixelContentIds(variant?.id, product.id),
                 content_type: 'product',
-                value: Number(variant?.price.amount || product.priceRange.minVariantPrice.amount) * quantity,
+                contents: [
+                  {
+                    id: cleanId,
+                    quantity,
+                    item_price: itemPrice,
+                  },
+                ],
+                value: itemPrice * quantity,
                 currency: variant?.price.currencyCode || product.priceRange.minVariantPrice.currencyCode,
-                num_items: quantity,
               });
             }
             setAdded(success);
