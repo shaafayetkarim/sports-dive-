@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { GoogleTagManager } from '@next/third-parties/google';
 import { CartProvider } from '@/components/CartProvider';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
@@ -75,6 +76,7 @@ export default async function Layout({ children }: { children: React.ReactNode }
   }
   return (
     <html lang="en" suppressHydrationWarning>
+      <GoogleTagManager gtmId="GTM-PXNK9PFM" />
       <body suppressHydrationWarning>
         <StructuredData />
         <a className="skip-link" href="#main">
