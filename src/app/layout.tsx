@@ -64,6 +64,11 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+  verification: {
+    other: {
+      'facebook-domain-verification': 'nma9cci5bd07tqv0emsk93kleml4rn',
+    },
+  },
 };
 export default async function Layout({ children }: { children: React.ReactNode }) {
   let navigation;
