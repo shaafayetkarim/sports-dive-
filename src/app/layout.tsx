@@ -5,6 +5,7 @@ import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { SmoothScroll } from '@/components/SmoothScroll';
 import { StructuredData } from '@/components/StructuredData';
+import { MetaPixel } from '@/components/MetaPixel';
 import { getNavigation, isDemo } from '@/lib/shopify';
 import { demoNavigation } from '@/lib/demo';
 import { SITE_URL } from '@/lib/config';
@@ -78,6 +79,7 @@ export default async function Layout({ children }: { children: React.ReactNode }
     <html lang="en" suppressHydrationWarning>
       <GoogleTagManager gtmId="GTM-PXNK9PFM" />
       <body suppressHydrationWarning>
+        <MetaPixel />
         <StructuredData />
         <a className="skip-link" href="#main">
           Skip to content
