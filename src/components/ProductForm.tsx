@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { useCart } from './CartProvider';
+import { fbPixelEvent } from './MetaPixel';
 import { money, type Product } from '@/lib/types';
 export function ProductForm({ product }: { product: Product }) {
   const initial =
@@ -84,7 +85,18 @@ export function ProductForm({ product }: { product: Product }) {
           }
           onClick={async () => {
             setAdded(false);
-            setAdded(await run({ action: 'add', variantId: variant?.id, quantity }));
+            const success = await run({ action: 'add', variantId: variant?.id, quantity });
+            if (success) {
+              fbPixelEvent('AddToCart', {
+                content_name: product.title,
+                content_ids: [variant?.id || product.id],
+                content_type: 'product',
+                value: Number(variant?.price.amount || product.priceRange.minVariantPrice.amount) * quantity,
+                currency: variant?.price.currencyCode || product.priceRange.minVariantPrice.currencyCode,
+                num_items: quantity,
+              });
+            }
+            setAdded(success);
           }}
         >
           {busy ? 'ADDING…' : variant?.availableForSale ? 'ADD TO BAG ↗' : 'UNAVAILABLE'}

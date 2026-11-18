@@ -7,6 +7,7 @@ import { ProductForm } from '@/components/ProductForm';
 import { ProductGallery } from '@/components/ProductGallery';
 import { ProductCard } from '@/components/ProductCard';
 import { getProductSpecs } from '@/lib/metafields';
+import { PixelViewContent } from '@/components/PixelViewContent';
 export async function generateMetadata({
   params,
 }: {
@@ -38,6 +39,13 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
     : null;
   return (
     <>
+      <PixelViewContent
+        productName={p.title}
+        productId={p.id}
+        value={Number(p.priceRange.minVariantPrice.amount)}
+        currency={p.priceRange.minVariantPrice.currencyCode}
+        category={categoryLabel || undefined}
+      />
       <div className="breadcrumbs">
         <Link href="/">Home</Link>
         <span>/</span>

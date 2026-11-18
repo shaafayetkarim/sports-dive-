@@ -6,18 +6,33 @@ import { useEffect, useRef } from 'react';
 
 const PIXEL_ID = '3247003572156693';
 
+/** Safely call fbq – queues events even before the script loads. */
+export function fbPixelEvent(
+  eventName: string,
+  params?: Record<string, unknown>,
+) {
+  if (typeof window === 'undefined') return;
+  const w = window as unknown as { fbq?: (...args: unknown[]) => void };
+  if (w.fbq) {
+    if (params) {
+      w.fbq('track', eventName, params);
+    } else {
+      w.fbq('track', eventName);
+    }
+  }
+}
+
 export function MetaPixel() {
   const pathname = usePathname();
   const isFirstRender = useRef(true);
 
+  // Fire PageView on client-side navigations
   useEffect(() => {
     if (isFirstRender.current) {
       isFirstRender.current = false;
       return;
     }
-    if (typeof window !== 'undefined' && (window as unknown as { fbq?: (...args: unknown[]) => void }).fbq) {
-      (window as unknown as { fbq: (...args: unknown[]) => void }).fbq('track', 'PageView');
-    }
+    fbPixelEvent('PageView');
   }, [pathname]);
 
   return (
@@ -52,4 +67,3 @@ export function MetaPixel() {
     </>
   );
 }
-

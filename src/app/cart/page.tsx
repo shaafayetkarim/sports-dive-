@@ -1,6 +1,7 @@
 'use client';
 import Link from 'next/link';
 import { useCart } from '@/components/CartProvider';
+import { fbPixelEvent } from '@/components/MetaPixel';
 import { money } from '@/lib/types';
 export default function CartPage() {
   const { cart, busy, error, run, loading, refresh } = useCart();
@@ -95,7 +96,23 @@ export default function CartPage() {
             <button
               className="button"
               disabled={busy || loading}
-              onClick={() => run({ action: 'checkout' })}
+              onClick={() => {
+                fbPixelEvent('InitiateCheckout', {
+                  content_ids: cart.lines.nodes.map((l) => l.merchandise.id),
+                  content_type: 'product',
+                  num_items: cart.totalQuantity,
+                  value: Number(cart.cost.subtotalAmount.amount),
+                  currency: cart.cost.subtotalAmount.currencyCode,
+                });
+                fbPixelEvent('Purchase', {
+                  content_ids: cart.lines.nodes.map((l) => l.merchandise.id),
+                  content_type: 'product',
+                  num_items: cart.totalQuantity,
+                  value: Number(cart.cost.subtotalAmount.amount),
+                  currency: cart.cost.subtotalAmount.currencyCode,
+                });
+                run({ action: 'checkout' });
+              }}
             >
               {busy ? 'PLEASE WAIT…' : 'CHECKOUT ↗'}
             </button>
