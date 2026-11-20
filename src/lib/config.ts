@@ -22,6 +22,10 @@ export type Sort = keyof typeof SORTS;
 
 export const VIDEOS = {
   hero: process.env.NEXT_PUBLIC_SHOPIFY_HERO_VIDEO_URL || '/hero.mp4',
+  heroMobile:
+    process.env.NEXT_PUBLIC_SHOPIFY_HERO_MOBILE_VIDEO_URL ||
+    process.env.NEXT_PUBLIC_SHOPIFY_HERO_VIDEO_URL ||
+    '/hero.mp4',
   a: process.env.NEXT_PUBLIC_SHOPIFY_VIDEO_A_URL || '/a.mp4',
   b: process.env.NEXT_PUBLIC_SHOPIFY_VIDEO_B_URL || '/b.MP4',
 };

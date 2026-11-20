@@ -20,7 +20,11 @@ export default async function Home({
   return (
     <>
       <section className="hero">
-        <VideoBackground className="hero-video" src={VIDEOS.hero} />
+        <VideoBackground
+          className="hero-video"
+          src={VIDEOS.hero}
+          mobileSrc={VIDEOS.heroMobile}
+        />
         <div className="hero-overlay" />
         <div className="hero-copy">
           <h1>
